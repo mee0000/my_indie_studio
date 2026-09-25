@@ -198,7 +198,3 @@ class Offer(TimestampMixin, Base):
 
 
 ## `deps.py` — FastAPI dependency
-
-
-
-
