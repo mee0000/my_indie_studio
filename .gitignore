@@ -1,0 +1,22 @@
+# === Environment & API Keys (보안 필수) ===
+.env
+.env.*
+*.pem
+
+# === Python ===
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.log
+
+# === Node.js / Vue / Uni-app ===
+node_modules/
+dist/
+unpackage/
+.nuxt/
+
+# === IDE & OS System ===
+.DS_Store
+.vscode/
+.idea/
