@@ -1,9 +1,9 @@
 from typing import List
 from fastapi import APIRouter, HTTPException, status
 from sqlalchemy import select
-from ..deps import DBSession
-from ..models import DemandPost, DemandStatus
-from ..schemas import DemandPostCreate, DemandPostResponse
+from apps.backend.deps import DBSession
+from apps.backend.models import DemandPost, DemandStatus
+from apps.backend.schemas import DemandPostCreate, DemandPostResponse
 
 router = APIRouter(prefix="/demands", tags=["Demand Posts"])
 
