@@ -2,7 +2,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from apps.backend.database import engine, Base
+from apps.backend.database import engine
+from apps.backend.models import Base
 from apps.backend.routers import demands
 
 
