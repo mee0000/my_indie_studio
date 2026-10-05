@@ -1,49 +1,25 @@
 from datetime import datetime
-from decimal import Decimal
-from typing import Optional, List
-from pydantic import BaseModel, ConfigDict, EmailStr
-from .models import UserRole, DemandStatus, OfferStatus
+from typing import Optional
+from pydantic import BaseModel, ConfigDict
+from apps.backend.models import DemandStatus
 
-# --- User Schemas ---
-class UserBase(BaseModel):
-    email: EmailStr
-    role: UserRole = UserRole.USER
 
-class UserCreate(UserBase):
-    password: str
-
-class UserResponse(UserBase):
-    id: int
-    created_at: datetime
-    model_config = ConfigDict(from_attributes=True)
-
-# --- DemandPost Schemas ---
-class DemandPostCreate(BaseModel):
+class DemandPostBase(BaseModel):
     title: str
     category: str
-    target_price_krw: Decimal
+    target_price_krw: int
     description: Optional[str] = None
 
-class DemandPostResponse(BaseModel):
+
+class DemandPostCreate(DemandPostBase):
+    pass
+
+
+class DemandPostResponse(DemandPostBase):
     id: int
     user_id: int
-    title: str
-    category: str
-    target_price_krw: Decimal
     status: DemandStatus
-    description: Optional[str]
     created_at: datetime
-    model_config = ConfigDict(from_attributes=True)
 
-# --- Offer Schemas ---
-class OfferCreate(BaseModel):
-    offered_price_rmb: Decimal
-
-class OfferResponse(BaseModel):
-    id: int
-    demand_id: int
-    buyer_id: int
-    offered_price_rmb: Decimal
-    status: OfferStatus
-    created_at: datetime
+    # Pydantic v2 ORM Mode 설정
     model_config = ConfigDict(from_attributes=True)

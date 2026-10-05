@@ -1,8 +1,11 @@
-from typing import Annotated
+from typing import AsyncGenerator
+from typing_extensions import Annotated
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from apps.backend.database import get_db
+from apps.backend.database import AsyncSessionLocal
 
-# AsyncSession을 FastAPI Dependency로 사용하는 타입 별칭
+async def get_db() -> AsyncGenerator[AsyncSession, None]:
+    async with AsyncSessionLocal() as session:
+        yield session
+
 DBSession = Annotated[AsyncSession, Depends(get_db)]
-

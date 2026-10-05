@@ -40,5 +40,13 @@ def generate_code_with_deepseek(prompt_text: str):
         print(f"❌ API 호출 중 오류 발생: {e}")
 
 if __name__ == "__main__":
-    test_prompt = "Create a simple FastAPI health check endpoint."
-    generate_code_with_deepseek(test_prompt)
+    prompt = """
+    Based on the following PostgreSQL schema:
+    - users (id, email, hashed_password, role, created_at)
+    - demand_posts (id, user_id, title, category, target_price_krw, status, description, created_at)
+    - offers (id, demand_id, buyer_id, offered_price_rmb, status, created_at)
+
+    Generate Python SQLAlchemy 2.0 ORM models for FastAPI.
+    Include proper relationships between Users, DemandPosts, and Offers.
+    """
+    generate_code_with_deepseek(prompt)
