@@ -1,0 +1,16 @@
+# my-indie-studio Rules
+
+[Project Context]
+- Domain: Korea-China Cross-Border Shopping Platform (MVP)
+- Monorepo Style: Apps in `apps/backend` and `apps/frontend`
+
+[Tech Stack]
+- Backend: Python 3.13, FastAPI, SQLAlchemy 2.0 (Async), Pydantic v2
+- Frontend: Vue 3, TypeScript, Uni-app (Vite)
+- Database: SQLite with aiosqlite (Local), PostgreSQL (Production planned)
+
+[Code Conventions]
+- Always use async/await for FastAPI database operations.
+- Use Vue 3 Composition API with `<script setup lang="ts">` in frontend.
+- Do NOT commit sensitive keys (.env is gitignored).
+- Keep code clean and well-typed with Pydantic and TypeScript interfaces.
